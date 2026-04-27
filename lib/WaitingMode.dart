@@ -8,7 +8,7 @@ class WaitingMode extends StatefulWidget {
 }
 
 class _WaitingModeState extends State<WaitingMode> {
-  DatabaseReference _databaseRef = FirebaseDatabase.instance.reference();
+  DatabaseReference _databaseRef = FirebaseDatabase.instance.ref();
   List<Marker> _markers = [];
 
   @override

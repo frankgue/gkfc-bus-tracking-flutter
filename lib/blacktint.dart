@@ -3,7 +3,8 @@
 //import 'dart:js';
 import 'dart:async';
 
-import 'package:bus_tracking_app/tracking/WaitingMode.dart';
+// import 'package:bus_tracking_app/WaitingMode.dart';
+import 'package:email_password_login/WaitingMode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

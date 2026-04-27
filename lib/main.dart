@@ -1,3 +1,4 @@
+import 'package:email_password_login/firebase_options.dart';
 import 'package:email_password_login/model/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,10 @@ import 'Screens/welcome_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
+  // await Firebase.initializeApp();
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, // <--- C'est ici que ça se passe
+  );
   runApp(MyApp());
 }
 

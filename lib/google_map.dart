@@ -324,7 +324,7 @@ class PassengerMode extends StatefulWidget {
 }
 
 class _PassengerModeState extends State<PassengerMode> {
-  DatabaseReference _databaseRef = FirebaseDatabase.instance.reference();
+  DatabaseReference _databaseRef = FirebaseDatabase.instance.ref();
 
   late Position _currentPosition;
 

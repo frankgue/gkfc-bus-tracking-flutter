@@ -3,6 +3,9 @@
 import 'dart:async';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:email_password_login/Screens/home_screen.dart';
+import 'package:email_password_login/Screens/login_screen.dart';
+import 'package:email_password_login/maps.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +14,13 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-import '../login/home_screen.dart';
-import '../login/login/login_screen.dart';
-import '../model/shared_preference.dart';
-import '../screens/home.dart';
+// import '../login/home_screen.dart';
+// import '../login/login/login_screen.dart';
+// import '../model/shared_preference.dart';
+// import '../screens/home.dart';
 import 'google_map.dart';
 import 'google_map_api.dart';
+import 'model/shared_preference.dart';
 
 class LocationTrack extends StatefulWidget {
   const LocationTrack({Key? key}) : super(key: key);
@@ -76,7 +80,8 @@ class _LocationTrackState extends State<LocationTrack> {
     super.initState();
 
     location = Location();
-    polylinePoints = PolylinePoints();
+    polylinePoints =
+        PolylinePoints(apiKey: 'AIzaSyC9W1rv3Db_A9TcnpyVlzBsngdCQHuiFlU');
 
     subscription = location.onLocationChanged.listen((clocation) {
       currentLocation = clocation;
@@ -123,10 +128,20 @@ class _LocationTrackState extends State<LocationTrack> {
 
   void setPolylinesInMap() async {
     var result = await polylinePoints.getRouteBetweenCoordinates(
-      GoogleMapApi().url,
-      PointLatLng(
-          currentLocation!.latitude ?? 0.0, currentLocation!.longitude ?? 0.0),
-      PointLatLng(destinationLatlng.latitude, destinationLatlng.longitude),
+      // apiKey: GoogleMapApi().url, // Assure-toi que .url contient bien ta CLÉ API (le texte)
+      request: PolylineRequest(
+        // uri:  GoogleMapApi().url,
+        origin: PointLatLng(
+          currentLocation?.latitude ?? 0.0,
+          currentLocation?.longitude ?? 0.0,
+        ),
+        destination: PointLatLng(
+          destinationLatlng.latitude,
+          destinationLatlng.longitude,
+        ),
+        mode:
+            TravelMode.driving, // Tu peux aussi mettre walking, bicycling, etc.
+      ),
     );
 
     if (result.points.isNotEmpty) {
@@ -234,7 +249,7 @@ class _LocationTrackState extends State<LocationTrack> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Home()),
+                                  builder: (context) => const HomePage()),
                             );
                           }),
                       IconButton(
@@ -253,7 +268,6 @@ class _LocationTrackState extends State<LocationTrack> {
                 //extendBodyBehindAppBar: true,
                 appBar: AppBar(
                   //toolbarHeight: 70,
-                  brightness: Brightness.dark,
                   title: const Text(
                     'KRU BUSES',
                     style: TextStyle(
@@ -287,6 +301,7 @@ class _LocationTrackState extends State<LocationTrack> {
                       },
                     )
                   ],
+                  systemOverlayStyle: SystemUiOverlayStyle.light,
                 ),
 
                 body: GoogleMap(

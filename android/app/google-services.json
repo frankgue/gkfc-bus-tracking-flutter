@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "531572016920",
-    "project_id": "fir-cfdec",
-    "storage_bucket": "fir-cfdec.appspot.com"
+    "project_number": "119004098187",
+    "project_id": "gkfc-bus-tracking",
+    "storage_bucket": "gkfc-bus-tracking.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:531572016920:android:e35b37d59f8af589fe806d",
+        "mobilesdk_app_id": "1:119004098187:android:a9c76f33310cc20f05ae8e",
         "android_client_info": {
           "package_name": "com.example.demo"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "531572016920-327f1k34kg7mhn3erhvs28tbvlig2ifr.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC9W1rv3Db_A9TcnpyVlzBsngdCQHuiFlU"
+          "current_key": "AIzaSyC98ytx7VJj2f8aYkhbFoQT8hsnY_-Dvzc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "531572016920-327f1k34kg7mhn3erhvs28tbvlig2ifr.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
